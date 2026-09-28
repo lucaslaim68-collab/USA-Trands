@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "welcome-to-food-trends-usa",
+    "title": "Welcome to Food Trends USA",
+    "metaTitle": "Welcome to Food Trends USA | foodtrend.blog",
+    "category": "Restaurants & Cafes",
+    "author": "Lucas Laim",
+    "date": "Sep 28, 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
+    "shortDesc": "Discover the latest culinary trends and restaurant stories across America.",
+    "longDesc": "<h2>Welcome!</h2><p>This is your first blog post loaded from the GitHub backend <code>posts.json</code> file.</p>"
+  }
+]
