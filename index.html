@@ -1,132 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Trends USA - foodtrend.blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Verification Code -->
+  <meta name="google-site-verification" content="UQlY8ThGU6vv7Ort5aW_sakF5LEtKcS9gY_GCcr0m2M" />
+  <title>FoodieBites | Delicious Recipes, Baking Tips & Packaging Guides</title>
+  <meta name="description" content="Explore easy healthy recipes, expert baking tips, custom food packaging guides, and delicious meal inspiration for home cooks.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body>
 
-    <!-- Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div>
-                <a href="index.html" class="text-2xl font-black text-red-600 tracking-wider">Food Trends USA</a>
-                <p class="text-xs text-gray-500">foodtrend.blog</p>
-            </div>
-            <nav class="space-x-6 flex items-center">
-                <a href="index.html" class="font-medium text-gray-700 hover:text-red-600 transition">Home</a>
-                <a href="create.html" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-red-700 transition">
-                    + Write Post
-                </a>
-            </nav>
-        </div>
-    </header>
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">Foodie<span>Bites</span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#baking">Baking</a>
+        <a href="#packaging">Packaging Guides</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-24 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Discover America's Best Food Trends</h1>
-            <p class="text-lg md:text-xl text-red-100 mb-8">Explore culinary stories, restaurant reviews, professional recipes, and publish your own blogs instantly.</p>
-            <a href="create.html" class="inline-block bg-white text-red-600 font-bold px-8 py-3.5 rounded-full shadow-lg hover:bg-gray-100 transition">
-                Start Writing Now
-            </a>
-        </div>
-    </section>
+  <!-- Hero Banner Section -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <h1>Delicious Recipes & Food Insights</h1>
+      <p>Your ultimate destination for easy healthy recipes, professional baking secrets, and creative custom food packaging ideas.</p>
+      <a href="#recipes" class="btn-primary">Explore Articles</a>
+    </div>
+  </section>
 
-    <!-- Blog Feed Section -->
-    <main class="max-w-7xl mx-auto px-6 py-16">
-        <div class="flex justify-between items-center mb-10">
-            <h2 class="text-3xl font-black text-gray-800">Latest Published Articles</h2>
-            <span id="postCount" class="text-sm font-semibold bg-red-100 text-red-600 px-3 py-1 rounded-full"></span>
-        </div>
-        
-        <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Dynamic Cards Loaded via JS -->
-        </div>
-    </main>
+  <!-- Main Content / Blog Grid -->
+  <main class="container main-content">
+    <div class="section-title">
+      <h2>Latest Blog Posts & Guides</h2>
+      <p>Handcrafted articles to elevate your kitchen experience and food business.</p>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10 text-center mt-20">
-        <p class="text-sm text-gray-400">&copy; 2026 Food Trends USA (foodtrend.blog). All rights reserved.</p>
-    </footer>
+    <div class="article-grid">
+      
+      <!-- Article 1: Face Serum -> Converted to Healthy Recipe / Food Guide -->
+      <div class="card">
+        <div class="card-badge">Recipes</div>
+        <h3>Easy Healthy Recipes for Busy Home Cooks</h3>
+        <p>Discover quick, nutritious, and delicious meal ideas that you can whip up in under 30 minutes without spending hours in the kitchen.</p>
+        <a href="easy-healthy-recipes.html" class="read-more">Read Full Guide &rarr;</a>
+      </div>
 
-    <script>
-        const defaultPosts = [
-            {
-                slug: "top-artisan-pizza-chicago",
-                title: "Top 5 Artisan Pizza Places in Chicago You Must Visit",
-                metaTitle: "Top 5 Artisan Pizza Places in Chicago | Food Trends USA",
-                category: "Fast Food & Pizza",
-                tags: "Pizza, Chicago, Cheese, Dining",
-                author: "Chef Marcus",
-                date: "Sep 28, 2026",
-                imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Explore the crispiest crusts, unique wood-fired ovens, and richest cheese blends across the Windy City.",
-                longDesc: "<h2>Introduction to Chicago Pizza Scene</h2><p>Chicago is world-famous for its deep dish, but the artisan thin-crust and wood-fired scene has exploded recently.</p><h3>Why Wood-Fired Matters</h3><p>The high heat locks in juices and creates a smoky char unmatched by standard commercial ovens.</p>"
-            }
-        ];
+      <!-- Article 2: Matte vs Glossy -> Converted to Baking / Pastry -->
+      <div class="card">
+        <div class="card-badge">Baking</div>
+        <h3>The Ultimate Guide to Custom Cupcake Liners & Boxes</h3>
+        <p>Learn how the right bakery packaging, pastry boxes, and custom cupcake liners can make your homemade bakes look professional and stay fresh longer.</p>
+        <a href="custom-cupcake-liners-boxes.html" class="read-more">Read Full Guide &rarr;</a>
+      </div>
 
-        function getPosts() {
-            const stored = localStorage.getItem('foodtrend_posts');
-            if (!stored) {
-                localStorage.setItem('foodtrend_posts', JSON.stringify(defaultPosts));
-                return defaultPosts;
-            }
-            return JSON.parse(stored);
-        }
+      <!-- Article 3: New Food Packaging Card -->
+      <div class="card">
+        <div class="card-badge">Packaging</div>
+        <h3>Custom Takeout & Food Box Trends</h3>
+        <p>Explore modern trends in eco-friendly custom takeout boxes, greaseproof paper bags, and branding solutions for food businesses and bakeries.</p>
+        <a href="custom-food-packaging-trends.html" class="read-more">Read Full Guide &rarr;</a>
+      </div>
 
-        function renderHome() {
-            const posts = getPosts();
-            const grid = document.getElementById('blogGrid');
-            document.getElementById('postCount').innerText = `${posts.length} Posts Available`;
-            grid.innerHTML = '';
+    </div>
+  </main>
 
-            posts.forEach((post, index) => {
-                grid.innerHTML += `
-                    <article class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between border border-gray-100 hover:shadow-xl transition transform hover:-translate-y-1">
-                        <div>
-                            <div class="relative">
-                                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-52 object-cover">
-                                <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${post.category || 'General'}</span>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-center text-xs text-gray-500 mb-2">
-                                    <span>By ${post.author || 'Admin'}</span>
-                                    <span>${post.date || 'Today'}</span>
-                                </div>
-                                <h3 class="text-xl font-bold mb-3 text-gray-900 leading-snug hover:text-red-600 cursor-pointer" onclick="viewPost('${post.slug}')">${post.title}</h3>
-                                <p class="text-gray-600 text-sm line-clamp-3 mb-4">${post.shortDesc}</p>
-                            </div>
-                        </div>
-                        <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-gray-50 pt-4">
-                            <a href="post.html?slug=${post.slug}" class="text-red-600 font-bold text-sm hover:underline flex items-center gap-1">
-                                Read Full Article &rarr;
-                            </a>
-                            <button onclick="copyPostContent(${index})" class="text-gray-500 hover:text-gray-800 text-xs bg-gray-100 px-3 py-1.5 rounded-lg transition" title="Copy Content">
-                                📋 Copy
-                            </button>
-                        </div>
-                    </article>
-                `;
-            });
-        }
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 FoodieBites. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
 
-        function viewPost(slug) {
-            window.location.href = `post.html?slug=${slug}`;
-        }
-
-        function copyPostContent(index) {
-            const posts = getPosts();
-            const p = posts[index];
-            const cleanText = `Title: ${p.title}\nMeta Title: ${p.metaTitle}\nCategory: ${p.category}\n\nSummary:\n${p.shortDesc}\n\nContent:\n${p.longDesc.replace(/<[^>]*>?/gm, '')}`;
-            navigator.clipboard.writeText(cleanText).then(() => {
-                alert('Blog post content copied successfully!');
-            });
-        }
-
-        renderHome();
-    </script>
 </body>
 </html>
