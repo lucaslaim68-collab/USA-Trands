@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Advance Blog - Food Trends USA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black text-red-600 tracking-wider">Food Trends USA</a>
+            <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-red-600">&larr; Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Form Container -->
+    <main class="max-w-3xl mx-auto px-6 py-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+            <h1 class="text-3xl font-black mb-8 text-gray-800 border-b pb-4">Publish a New Advance Blog Post</h1>
+            
+            <form id="advanceBlogForm" onsubmit="handlePublish(event)" class="space-y-6">
+                
+                <!-- Blog Title -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Blog Title</label>
+                    <input type="text" id="blogTitle" required class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="e.g. Best Seafood Restaurants in Miami">
+                </div>
+
+                <!-- Meta Title -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">SEO Meta Title</label>
+                    <input type="text" id="metaTitle" required class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="SEO optimized title for Google search engines">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Category -->
+                    <div>
+                        <label class="block text-sm font-bold mb-2 text-gray-700">Category</label>
+                        <select id="blogCategory" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-white focus:ring-2 focus:ring-red-500 focus:outline-none">
+                            <option value="Restaurants & Cafes">Restaurants & Cafes</option>
+                            <option value="Fast Food & Pizza">Fast Food & Pizza</option>
+                            <option value="Healthy & Organic">Healthy & Organic</option>
+                            <option value="Recipes & Baking">Recipes & Baking</option>
+                            <option value="Street Food">Street Food</option>
+                        </select>
+                    </div>
+
+                    <!-- Author Name -->
+                    <div>
+                        <label class="block text-sm font-bold mb-2 text-gray-700">Author Name</label>
+                        <input type="text" id="blogAuthor" required class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="e.g. Lucas Laim">
+                    </div>
+                </div>
+
+                <!-- Featured Image Upload -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Featured Image (Upload from Computer)</label>
+                    <input type="file" id="imageFile" accept="image/*" required class="w-full border border-gray-300 rounded-xl px-4 py-2.5 bg-gray-50 focus:outline-none">
+                    <p class="text-xs text-gray-500 mt-1">Select any high-resolution photo from your system.</p>
+                </div>
+
+                <!-- Short Description -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Short Summary / Excerpt</label>
+                    <textarea id="shortDesc" rows="3" required class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Write a brief overview of the blog..."></textarea>
+                </div>
+
+                <!-- Advanced Rich Text Editor for Long Description -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Long Description & Content Editor (Advance Styling)</label>
+                    
+                    <!-- Formatting Toolbar -->
+                    <div class="flex flex-wrap gap-1.5 bg-gray-100 p-2 border border-gray-300 border-b-0 rounded-t-xl">
+                        <button type="button" onclick="execCmd('formatBlock', '<h1>')" class="px-3 py-1 bg-white border rounded font-bold text-xs hover:bg-gray-200">H1</button>
+                        <button type="button" onclick="execCmd('formatBlock', '<h2>')" class="px-3 py-1 bg-white border rounded font-bold text-xs hover:bg-gray-200">H2</button>
+                        <button type="button" onclick="execCmd('formatBlock', '<h3>')" class="px-3 py-1 bg-white border rounded font-bold text-xs hover:bg-gray-200">H3</button>
+                        <button type="button" onclick="execCmd('bold', null)" class="px-3 py-1 bg-white border rounded font-bold text-xs hover:bg-gray-200">B</button>
+                        <button type="button" onclick="execCmd('italic', null)" class="px-3 py-1 bg-white border rounded italic text-xs hover:bg-gray-200">I</button>
+                        <button type="button" onclick="execCmd('underline', null)" class="px-3 py-1 bg-white border rounded underline text-xs hover:bg-gray-200">U</button>
+                        <button type="button" onclick="insertLink()" class="px-3 py-1 bg-white border rounded text-xs hover:bg-gray-200">🔗 Anchor Link</button>
+                        <button type="button" onclick="execCmd('insertUnorderedList', null)" class="px-3 py-1 bg-white border rounded text-xs hover:bg-gray-200">• Bullet List</button>
+                        <button type="button" onclick="execCmd('justifyLeft', null)" class="px-3 py-1 bg-white border rounded text-xs hover:bg-gray-200">Left</button>
+                        <button type="button" onclick="execCmd('justifyCenter', null)" class="px-3 py-1 bg-white border rounded text-xs hover:bg-gray-200">Center</button>
+                    </div>
+                    
+                    <!-- Editable Content Box -->
+                    <div id="editorContent" contenteditable="true" class="w-full border border-gray-300 rounded-b-xl px-4 py-4 min-h-[250px] bg-white focus:outline-none focus:ring-2 focus:ring-red-500 overflow-y-auto"></div>
+                </div>
+
+                <!-- Tags Input -->
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Tags (Comma separated)</label>
+                    <input type="text" id="blogTags" class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="e.g. food, usa, trends, recipe">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-red-600 text-white font-extrabold py-4 rounded-xl hover:bg-red-700 transition shadow-lg text-lg">
+                    Publish Post to foodtrend.blog 🚀
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 text-center mt-20">
+        <p class="text-sm text-gray-400">&copy; 2026 Food Trends USA (foodtrend.blog). All rights reserved.</p>
+    </footer>
+
+    <script>
+        function execCmd(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
+        function insertLink() {
+            const url = prompt("Enter target URL link (e.g. https://example.com):");
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        function createSlug(title) {
+            return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        }
+
+        function handlePublish(e) {
+            e.preventDefault();
+            const title = document.getElementById('blogTitle').value;
+            const metaTitle = document.getElementById('metaTitle').value;
+            const category = document.getElementById('blogCategory').value;
+            const author = document.getElementById('blogAuthor').value;
+            const shortDesc = document.getElementById('shortDesc').value;
+            const longDesc = document.getElementById('editorContent').innerHTML;
+            const tags = document.getElementById('blogTags').value;
+            const fileInput = document.getElementById('imageFile');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(uploadEvent) {
+                    savePostData({
+                        slug: createSlug(title) + '-' + Date.now(),
+                        title,
+                        metaTitle,
+                        category,
+                        author,
+                        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                        imageUrl: uploadEvent.target.result,
+                        shortDesc,
+                        longDesc,
+                        tags
+                    });
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        function savePostData(newPost) {
+            const stored = localStorage.getItem('foodtrend_posts');
+            const posts = stored ? JSON.parse(stored) : [];
+            posts.unshift(newPost);
+            localStorage.setItem('foodtrend_posts', JSON.stringify(posts));
+
+            alert('Blog published successfully with unique link slug!');
+            window.location.href = `post.html?slug=${newPost.slug}`;
+        }
+    </script>
+</body>
+</html>
