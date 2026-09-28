@@ -4,130 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Trends USA - foodtrend.blog</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-100 text-gray-900 font-sans">
 
-    <!-- Header / Navigation -->
-    <header class="bg-white shadow sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div>
-                <a href="#" onclick="showHome(event)" class="text-2xl font-black text-red-600 tracking-wider">Food Trends USA</a>
+                <a href="index.html" class="text-2xl font-black text-red-600 tracking-wider">Food Trends USA</a>
                 <p class="text-xs text-gray-500">foodtrend.blog</p>
             </div>
             <nav class="space-x-6 flex items-center">
-                <a href="#" onclick="showHome(event)" class="font-medium hover:text-red-600 transition">Home</a>
-                <a href="#blogs" onclick="showHome(event)" class="font-medium hover:text-red-600 transition">Blogs</a>
-                <button onclick="openModal()" class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-red-700 transition">
-                    + Add Post
-                </button>
+                <a href="index.html" class="font-medium text-gray-700 hover:text-red-600 transition">Home</a>
+                <a href="create.html" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-red-700 transition">
+                    + Write Post
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- Main View Container -->
-    <div id="mainView">
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-r from-red-600 to-orange-500 text-white py-20 px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Welcome to Food Trends USA</h1>
-                <p class="text-lg md:text-xl text-red-100 mb-8">Discover the latest food trends, recipes, and culinary stories across America. Share your own recipes with the community!</p>
-                <button onclick="openModal()" class="bg-white text-red-600 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">
-                    Write a Blog Post
-                </button>
-            </div>
-        </section>
-
-        <!-- Blog Feed -->
-        <main id="blogs" class="max-w-6xl mx-auto px-4 py-12">
-            <h2 class="text-3xl font-bold mb-8 border-b pb-4 text-gray-800">Latest Food Blogs</h2>
-            <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Dynamic cards will load here -->
-            </div>
-        </main>
-    </div>
-
-    <!-- Single Blog Detail View (Hidden by default) -->
-    <div id="detailView" class="hidden max-w-4xl mx-auto px-4 py-12">
-        <button onclick="showHome(event)" class="mb-6 inline-flex items-center text-red-600 font-semibold hover:underline">
-            &larr; Back to Home
-        </button>
-        <div id="detailContent" class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-            <!-- Dynamic post details will load here -->
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-24 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Discover America's Best Food Trends</h1>
+            <p class="text-lg md:text-xl text-red-100 mb-8">Explore culinary stories, restaurant reviews, professional recipes, and publish your own blogs instantly.</p>
+            <a href="create.html" class="inline-block bg-white text-red-600 font-bold px-8 py-3.5 rounded-full shadow-lg hover:bg-gray-100 transition">
+                Start Writing Now
+            </a>
         </div>
-    </div>
+    </section>
+
+    <!-- Blog Feed Section -->
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-3xl font-black text-gray-800">Latest Published Articles</h2>
+            <span id="postCount" class="text-sm font-semibold bg-red-100 text-red-600 px-3 py-1 rounded-full"></span>
+        </div>
+        
+        <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Cards Loaded via JS -->
+        </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 text-center mt-20">
-        <p>&copy; 2026 Food Trends USA (foodtrend.blog). All rights reserved.</p>
+    <footer class="bg-gray-900 text-white py-10 text-center mt-20">
+        <p class="text-sm text-gray-400">&copy; 2026 Food Trends USA (foodtrend.blog). All rights reserved.</p>
     </footer>
 
-    <!-- Post Creation Modal -->
-    <div id="postModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50 p-4 overflow-y-auto">
-        <div class="bg-white rounded-xl max-w-2xl w-full p-6 relative max-h-[90vh] overflow-y-auto shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
-            <h3 class="text-2xl font-bold mb-6 text-gray-800">Create a New Blog Post</h3>
-            
-            <form id="blogForm" onsubmit="handlePostSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-1 text-gray-700">Blog Title</label>
-                    <input type="text" id="blogTitle" required class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="e.g. Best Burgers in New York">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1 text-gray-700">Meta Title (SEO)</label>
-                    <input type="text" id="metaTitle" required class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="SEO title for search engines">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1 text-gray-700">Featured Image (Upload from Computer)</label>
-                    <input type="file" id="imageFile" accept="image/*" required class="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1 text-gray-700">Short Description</label>
-                    <textarea id="shortDesc" rows="2" required class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Brief summary of the post..."></textarea>
-                </div>
-                
-                <!-- Advanced Formatting Toolbar for Long Description -->
-                <div>
-                    <label class="block text-sm font-semibold mb-1 text-gray-700">Long Description & Content Editor</label>
-                    <div class="flex flex-wrap gap-1 bg-gray-100 p-2 border border-b-0 rounded-t-lg">
-                        <button type="button" onclick="formatText('formatBlock', '<h1>')" class="px-2 py-1 bg-white border rounded text-xs font-bold hover:bg-gray-200">H1</button>
-                        <button type="button" onclick="formatText('formatBlock', '<h2>')" class="px-2 py-1 bg-white border rounded text-xs font-bold hover:bg-gray-200">H2</button>
-                        <button type="button" onclick="formatText('formatBlock', '<h3>')" class="px-2 py-1 bg-white border rounded text-xs font-bold hover:bg-gray-200">H3</button>
-                        <button type="button" onclick="formatText('bold', null)" class="px-2 py-1 bg-white border rounded text-xs font-bold hover:bg-gray-200">B</button>
-                        <button type="button" onclick="formatText('italic', null)" class="px-2 py-1 bg-white border rounded text-xs italic hover:bg-gray-200">I</button>
-                        <button type="button" onclick="formatText('underline', null)" class="px-2 py-1 bg-white border rounded text-xs underline hover:bg-gray-200">U</button>
-                        <button type="button" onclick="addLink()" class="px-2 py-1 bg-white border rounded text-xs hover:bg-gray-200">Link 🔗</button>
-                        <button type="button" onclick="formatText('insertUnorderedList', null)" class="px-2 py-1 bg-white border rounded text-xs hover:bg-gray-200">• List</button>
-                    </div>
-                    <div id="editorContent" contenteditable="true" class="w-full border rounded-b-lg px-3 py-3 min-h-[180px] bg-white focus:outline-none focus:ring-2 focus:ring-red-500 overflow-y-auto"></div>
-                </div>
-
-                <button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition shadow">
-                    Publish Post
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript Application Logic -->
     <script>
         const defaultPosts = [
             {
-                slug: "top-5-artisan-pizza-places-in-chicago",
-                title: "Top 5 Artisan Pizza Places in Chicago",
+                slug: "top-artisan-pizza-chicago",
+                title: "Top 5 Artisan Pizza Places in Chicago You Must Visit",
                 metaTitle: "Top 5 Artisan Pizza Places in Chicago | Food Trends USA",
+                category: "Fast Food & Pizza",
+                tags: "Pizza, Chicago, Cheese, Dining",
+                author: "Chef Marcus",
+                date: "Sep 28, 2026",
                 imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Explore the crispiest crusts and richest cheese blends across the Windy City.",
-                longDesc: "<h2>Introduction</h2><p>Chicago is world-famous for deep dish, but the artisan thin-crust scene has exploded recently.</p><p>From wood-fired ovens in Wicker Park to secret neighborhood spots, here are the top 5 places every pizza lover must visit.</p>"
-            },
-            {
-                slug: "the-rise-of-vegan-bakery-los-angeles",
-                title: "The Rise of Vegan Bakeries in Los Angeles",
-                metaTitle: "Vegan Bakeries Trending in Los Angeles | Food Trends USA",
-                imageUrl: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Plant-based pastries are taking over LA with unbelievable flavor and texture.",
-                longDesc: "<h2>Plant-Based Revolution</h2><p>Who says dairy and eggs are necessary for great baking? Los Angeles bakeries are redefining pastry arts using plant-based butter, coconut creams, and organic sweeteners.</p>"
+                shortDesc: "Explore the crispiest crusts, unique wood-fired ovens, and richest cheese blends across the Windy City.",
+                longDesc: "<h2>Introduction to Chicago Pizza Scene</h2><p>Chicago is world-famous for its deep dish, but the artisan thin-crust and wood-fired scene has exploded recently.</p><h3>Why Wood-Fired Matters</h3><p>The high heat locks in juices and creates a smoky char unmatched by standard commercial ovens.</p>"
             }
         ];
 
@@ -140,32 +77,35 @@
             return JSON.parse(stored);
         }
 
-        function createSlug(title) {
-            return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-        }
-
-        function renderPosts() {
+        function renderHome() {
             const posts = getPosts();
             const grid = document.getElementById('blogGrid');
+            document.getElementById('postCount').innerText = `${posts.length} Posts Available`;
             grid.innerHTML = '';
 
             posts.forEach((post, index) => {
                 grid.innerHTML += `
-                    <article class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between border border-gray-100 hover:shadow-xl transition">
+                    <article class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between border border-gray-100 hover:shadow-xl transition transform hover:-translate-y-1">
                         <div>
-                            <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
+                            <div class="relative">
+                                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-52 object-cover">
+                                <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${post.category || 'General'}</span>
+                            </div>
                             <div class="p-6">
-                                <span class="text-xs font-semibold text-red-600 uppercase tracking-wider">${post.metaTitle}</span>
-                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900 cursor-pointer hover:text-red-600" onclick="openPost('${post.slug}')">${post.title}</h3>
-                                <p class="text-gray-600 text-sm mb-4">${post.shortDesc}</p>
+                                <div class="flex justify-between items-center text-xs text-gray-500 mb-2">
+                                    <span>By ${post.author || 'Admin'}</span>
+                                    <span>${post.date || 'Today'}</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 text-gray-900 leading-snug hover:text-red-600 cursor-pointer" onclick="viewPost('${post.slug}')">${post.title}</h3>
+                                <p class="text-gray-600 text-sm line-clamp-3 mb-4">${post.shortDesc}</p>
                             </div>
                         </div>
-                        <div class="px-6 pb-6 pt-0 flex gap-2">
-                            <button onclick="openPost('${post.slug}')" class="flex-1 bg-red-600 text-white font-medium py-2 rounded-lg hover:bg-red-700 transition text-center text-sm">
-                                Read More
-                            </button>
-                            <button onclick="copyPost(${index})" class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition text-sm" title="Copy Content">
-                                📋
+                        <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-gray-50 pt-4">
+                            <a href="post.html?slug=${post.slug}" class="text-red-600 font-bold text-sm hover:underline flex items-center gap-1">
+                                Read Full Article &rarr;
+                            </a>
+                            <button onclick="copyPostContent(${index})" class="text-gray-500 hover:text-gray-800 text-xs bg-gray-100 px-3 py-1.5 rounded-lg transition" title="Copy Content">
+                                📋 Copy
                             </button>
                         </div>
                     </article>
@@ -173,115 +113,20 @@
             });
         }
 
-        function formatText(command, value) {
-            document.execCommand(command, false, value);
+        function viewPost(slug) {
+            window.location.href = `post.html?slug=${slug}`;
         }
 
-        function addLink() {
-            const url = prompt("Enter target URL (e.g. https://example.com):");
-            if (url) {
-                document.execCommand('createLink', false, url);
-            }
-        }
-
-        function openModal() {
-            document.getElementById('postModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('postModal').classList.add('hidden');
-        }
-
-        function handlePostSubmit(e) {
-            e.preventDefault();
-            const title = document.getElementById('blogTitle').value;
-            const metaTitle = document.getElementById('metaTitle').value;
-            const shortDesc = document.getElementById('shortDesc').value;
-            const longDesc = document.getElementById('editorContent').innerHTML;
-            const fileInput = document.getElementById('imageFile');
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(uploadEvent) {
-                    saveNewPost(title, metaTitle, shortDesc, longDesc, uploadEvent.target.result);
-                }
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        }
-
-        function saveNewPost(title, metaTitle, shortDesc, longDesc, imageUrl) {
+        function copyPostContent(index) {
             const posts = getPosts();
-            const newPost = {
-                slug: createSlug(title),
-                title,
-                metaTitle,
-                imageUrl,
-                shortDesc,
-                longDesc
-            };
-
-            posts.unshift(newPost);
-            localStorage.setItem('foodtrend_posts', JSON.stringify(posts));
-
-            document.getElementById('blogForm').reset();
-            document.getElementById('editorContent').innerHTML = '';
-            closeModal();
-            renderPosts();
-        }
-
-        function openPost(slug) {
-            const posts = getPosts();
-            const post = posts.find(p => p.slug === slug);
-            if (!post) return;
-
-            window.location.hash = `post/${slug}`;
-            document.getElementById('mainView').classList.add('hidden');
-            document.getElementById('detailView').classList.remove('hidden');
-
-            document.getElementById('detailContent').innerHTML = `
-                <span class="text-sm font-semibold text-red-600 uppercase tracking-wider">${post.metaTitle}</span>
-                <h1 class="text-3xl md:text-4xl font-black mt-2 mb-4 text-gray-900">${post.title}</h1>
-                <p class="text-lg text-gray-600 font-medium mb-6 italic">${post.shortDesc}</p>
-                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-96 object-cover rounded-xl mb-8 shadow">
-                <div class="prose max-w-none text-gray-800 space-y-4">
-                    ${post.longDesc}
-                </div>
-            `;
-            window.scrollTo(0, 0);
-        }
-
-        function showHome(e) {
-            if (e) e.preventDefault();
-            window.location.hash = '';
-            document.getElementById('detailView').classList.add('hidden');
-            document.getElementById('mainView').classList.remove('hidden');
-            renderPosts();
-        }
-
-        function copyPost(index) {
-            const posts = getPosts();
-            const post = posts[index];
-            const textToCopy = `Title: ${post.title}\nMeta Title: ${post.metaTitle}\n\nShort Description:\n${post.shortDesc}\n\nLong Content:\n${post.longDesc.replace(/<[^>]*>?/gm, '')}`;
-            
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('Blog post content copied to clipboard successfully!');
+            const p = posts[index];
+            const cleanText = `Title: ${p.title}\nMeta Title: ${p.metaTitle}\nCategory: ${p.category}\n\nSummary:\n${p.shortDesc}\n\nContent:\n${p.longDesc.replace(/<[^>]*>?/gm, '')}`;
+            navigator.clipboard.writeText(cleanText).then(() => {
+                alert('Blog post content copied successfully!');
             });
         }
 
-        // Handle browser back/forward buttons & URL hash routing
-        window.addEventListener('hashchange', checkRoute);
-        function checkRoute() {
-            const hash = window.location.hash;
-            if (hash.startsWith('#post/')) {
-                const slug = hash.replace('#post/', '');
-                openPost(slug);
-            } else {
-                showHome();
-            }
-        }
-
-        // Initial load
-        checkRoute();
+        renderHome();
     </script>
 </body>
 </html>
